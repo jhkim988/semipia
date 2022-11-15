@@ -1,5 +1,6 @@
 package excel;
 
+import data.Goods;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -8,6 +9,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ExcelReader {
     @FunctionalInterface
@@ -37,18 +41,24 @@ public class ExcelReader {
     }
 
     public static void main(String[] args) {
-        ExcelReader reader = new ExcelReader(
+        List<Goods> goodsList = new ArrayList<>();
+        ExcelReader goodsExcel = new ExcelReader(
                 "../2022-11-13"
                 , "0.품목리스트.xlsx"
                 , "품목등록"
                 , sheet -> {
             for (Row row : sheet) {
-                for (Cell cell : row) {
-                    System.out.print(cell.getStringCellValue() + "\t");
-                }
-                System.out.println();
+                Iterator<Cell> iter = row.iterator();
+                Goods goods = Goods.builder()
+                        .code(iter.next().getStringCellValue())
+                        .groupName(iter.next().getStringCellValue())
+                        .goodsName(iter.next().getStringCellValue())
+                        .build();
+                goodsList.add(goods);
             }
         });
-        reader.load();
+        goodsExcel.load();
+
+        goodsList.stream().forEach(x -> System.out.println(x.getCode() + ": " + x.getGroupName() + " - " + x.getGoodsName()));
     }
 }
