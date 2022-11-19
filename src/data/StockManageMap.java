@@ -4,11 +4,7 @@ import excel.ExcelReader;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.function.BiConsumer;
+import java.util.*;
 
 import static excel.ExcelReader.numericalElseZero;
 
@@ -20,18 +16,20 @@ public class StockManageMap {
                 "../2022-11-19"
                 , "2.재고변동표.xlsx"
                 , "재고변동표"
-                , StockManageMap::add_재고변동표
+                , StockManageMap::readCell_재고변동표
         ).load();
-
+        System.out.println("재고변동표 로딩 완료");
         new ExcelReader(
                 "../2022-11-19"
                 , "1.판매현황.xlsx"
                 , "판매현황"
-                , StockManageMap::add_판매현황
+                , StockManageMap::readCell_판매현황
         ).load();
+        System.out.println("판매현황 로딩 완료");
     }
 
-    public static void add_재고변동표(Row row) {
+    public static void readCell_재고변동표(Row row) {
+        if (row.getRowNum() == 0) return;
         Iterator<Cell> iterator = row.cellIterator();
         String code = iterator.next().getStringCellValue();
         Date date = iterator.next().getDateCellValue();
@@ -49,7 +47,8 @@ public class StockManageMap {
         rows.put(goodsMonth, stockManage);
     }
 
-    public static void add_판매현황(Row row) {
+    public static void readCell_판매현황(Row row) {
+        if (row.getRowNum() == 0) return;
         Iterator<Cell> iterator = row.cellIterator();
         String code = iterator.next().getStringCellValue();
         Date date = iterator.next().getDateCellValue();
@@ -60,7 +59,7 @@ public class StockManageMap {
         GoodsMonth goodsMonth = new GoodsMonth(goods, date);
 
         StockManage stockManage = get(goodsMonth);
-        stockManage.addSaleInfo(new SaleInfo(partner, quantity));
+        Objects.requireNonNull(stockManage).addSaleInfo(new SaleInfo(partner, quantity));
     }
     
     public static StockManage get(GoodsMonth goodsMonth) {
@@ -73,11 +72,11 @@ public class StockManageMap {
         return null;
     }
 
-    public static void forEach(BiConsumer<? super GoodsMonth, ? super StockManage> biConsumer) {
-        rows.forEach(biConsumer);
-    }
-
     public static StockManage put(GoodsMonth key, StockManage value){
         return rows.put(key, value);
+    }
+
+    public static Set<Map.Entry<GoodsMonth, StockManage>> getEntrySet() {
+        return rows.entrySet();
     }
 }

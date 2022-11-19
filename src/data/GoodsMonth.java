@@ -1,12 +1,11 @@
 package data;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class GoodsMonth implements Comparable<GoodsMonth> {
-    private Goods goods;
-    private Date date;
+    private final Goods goods;
+    private final Date date;
 
     public GoodsMonth(Goods goods, Date date) {
         this.goods = goods;

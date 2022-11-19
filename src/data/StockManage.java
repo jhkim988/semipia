@@ -1,6 +1,7 @@
 package data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class StockManage {
@@ -39,8 +40,12 @@ public class StockManage {
         return stockOut.stream().sorted().limit(num).collect(Collectors.toList());
     }
 
-    public List<SaleInfo> etcSaleInfo(int num) {
-        return stockOut.stream().sorted().skip(num).collect(Collectors.toList());
+//    public List<SaleInfo> etcSaleInfo(int num) {
+//        return stockOut.stream().sorted().skip(num).collect(Collectors.toList());
+//    }
+
+    public int etcSum(int num) {
+        return stockOut.stream().sorted().skip(num).map(SaleInfo::getQuantity).reduce(Integer::sum).orElse(0);
     }
 
     public void setStock(int remain) {
