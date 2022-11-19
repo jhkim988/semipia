@@ -14,4 +14,8 @@ public class SaleInfo {
         this.partner = partner;
         this.quantity = quantity;
     }
+
+    public String getGoodsName() {
+        return this.goodsName;
+    }
 }
