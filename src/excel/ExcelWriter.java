@@ -1,6 +1,5 @@
 package excel;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -8,33 +7,31 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Iterator;
 
 public class ExcelWriter {
-    private int rowNum = 0;
-    private int colNum = 0;
-    private String filePath;
-    private String fileName;
-    private XSSFWorkbook workbook;
-    private XSSFSheet sheet;
+    private final String filePath;
+    private final String fileName;
+    private final XSSFWorkbook workbook;
+    private final XSSFSheet sheet;
+    private final ExcelWriteStrategy strategy;
+    private final Iterator<?> iterator;
 
-    private Row row;
-    private Cell cell;
-
-    public ExcelWriter(String filePath, String fileName) {
+    public ExcelWriter(String filePath, String fileName, ExcelWriteStrategy strategy, Iterator<?> iterator) {
         this.filePath = filePath;
         this.fileName = fileName;
         this.workbook = new XSSFWorkbook();
         this.sheet = workbook.createSheet();
+        this.strategy = strategy;
+        this.iterator = iterator;
     }
 
-    public void createRow() {
-        colNum = 0;
-        this.row = sheet.createRow(rowNum++);
-    }
-
-    public Cell getNextCell() {
-        return row.createCell(colNum++);
+    public void writeAll() {
+        int rowNum = 0;
+        while (iterator.hasNext()) {
+            Row row = sheet.createRow(rowNum++);
+            strategy.rowStrategy(row, iterator.next());
+        }
     }
 
     public void save() {
