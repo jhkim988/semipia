@@ -6,14 +6,13 @@ import java.util.stream.Collectors;
 public class StockManage {
     private int stockInMonth;
     private int stockOutMonth;
-    private final List<SaleInfo> stockOut;
+    private final List<SaleInfo> stockOut = new ArrayList<>();
 
     private int stock;
 
     public StockManage() {
         this.stockInMonth = 0;
         this.stockOutMonth = 0;
-        this.stockOut = new ArrayList<>();
     }
 
     public int getStockOutMonth() {
