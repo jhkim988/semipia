@@ -42,7 +42,7 @@ public class StockManageMap {
         Goods goods = GoodsMap.get(code);
         GoodsMonth goodsMonth = new GoodsMonth(goods, date);
 
-        StockManage stockManage = new StockManage(goodsMonth);
+        StockManage stockManage = new StockManage();
         stockManage.setStockInMonth(stockIn);
         stockManage.setStockOutMonth(stockOut);
         stockManage.setStock(remain);
