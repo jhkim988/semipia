@@ -1,6 +1,7 @@
 package excel;
 
 import data.Goods;
+import data.SaleInfo;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -9,20 +10,20 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ExcelReader {
     @FunctionalInterface
-    private static interface Actor {
+    private interface Actor {
         void act(XSSFSheet sheet);
     }
-    private String filePath;
-    private String fileName;
-    private String sheetName;
+    private final String filePath;
+    private final String fileName;
+    private final String sheetName;
 
-    private Actor actor;
+    private final Actor actor;
     public ExcelReader(String filePath, String fileName, String sheetName, Actor actor) {
         this.filePath = filePath;
         this.fileName = fileName;
@@ -41,24 +42,38 @@ public class ExcelReader {
     }
 
     public static void main(String[] args) {
-        List<Goods> goodsList = new ArrayList<>();
-        ExcelReader goodsExcel = new ExcelReader(
+        final Map<String, Goods> goodsMap = new HashMap<>();
+        new ExcelReader(
                 "../2022-11-13"
                 , "0.품목리스트.xlsx"
                 , "품목등록"
                 , sheet -> {
             for (Row row : sheet) {
                 Iterator<Cell> iter = row.iterator();
-                Goods goods = Goods.builder()
-                        .code(iter.next().getStringCellValue())
-                        .groupName(iter.next().getStringCellValue())
-                        .goodsName(iter.next().getStringCellValue())
-                        .build();
-                goodsList.add(goods);
+                String code = iter.next().getStringCellValue();
+                String groupName = iter.next().getStringCellValue();
+                String goodsName = iter.next().getStringCellValue();
+                goodsMap.put(code, new Goods(code, groupName, goodsName));
             }
-        });
-        goodsExcel.load();
+        }).load();
 
-        goodsList.stream().forEach(x -> System.out.println(x.getCode() + ": " + x.getGroupName() + " - " + x.getGoodsName()));
+        final List<SaleInfo> saleInfoList = new ArrayList<>();
+        new ExcelReader(
+                "../2022-11-13"
+                , "1.판매현황.xlsx"
+                , "판매현황"
+                , sheet -> {
+                    for (Row row : sheet) {
+                        Iterator<Cell> iter = row.iterator();
+                        String goodsName = iter.next().getStringCellValue();
+                        LocalDate localDate = iter.next().getLocalDateTimeCellValue().toLocalDate();
+                        String partner = iter.next().getStringCellValue();
+                        int quantity = (int) iter.next().getNumericCellValue();
+                        saleInfoList.add(new SaleInfo(goodsName, localDate, partner, quantity));
+                    }
+        }
+        ).load();
+
+        saleInfoList.stream().collect(Collectors.groupingBy(SaleInfo::getGoodsName));
     }
 }
