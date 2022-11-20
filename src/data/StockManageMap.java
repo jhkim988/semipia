@@ -4,11 +4,13 @@ import excel.ExcelReader;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static excel.ExcelReader.numericalElseZero;
 
 public class StockManageMap {
+    private static final LocalDateTime now = LocalDateTime.now();
     private static final Map<GoodsMonth, StockManage> rows = new TreeMap<>();
 
     static {
@@ -32,10 +34,11 @@ public class StockManageMap {
         if (row.getRowNum() == 0) return;
         Iterator<Cell> iterator = row.cellIterator();
         String code = iterator.next().getStringCellValue();
-        Date date = iterator.next().getDateCellValue();
-        int stockIn = numericalElseZero(iterator.next());
-        int stockOut = numericalElseZero(iterator.next());
-        int remain = numericalElseZero(iterator.next());
+        LocalDateTime date = iterator.next().getLocalDateTimeCellValue();
+
+        Double stockIn = numericalElseZero(iterator.next());
+        Double stockOut = numericalElseZero(iterator.next());
+        Double remain = numericalElseZero(iterator.next());
 
         Goods goods = GoodsMap.get(code);
         GoodsMonth goodsMonth = new GoodsMonth(goods, date);
@@ -44,6 +47,9 @@ public class StockManageMap {
         stockManage.setStockInMonth(stockIn);
         stockManage.setStockOutMonth(stockOut);
         stockManage.setStock(remain);
+        if (date.getYear() == now.getYear() && date.getMonth() == now.getMonth()) {
+            goods.setCurrentQuantity(remain);
+        }
         rows.put(goodsMonth, stockManage);
     }
 
@@ -51,9 +57,9 @@ public class StockManageMap {
         if (row.getRowNum() == 0) return;
         Iterator<Cell> iterator = row.cellIterator();
         String code = iterator.next().getStringCellValue();
-        Date date = iterator.next().getDateCellValue();
+        LocalDateTime date = iterator.next().getLocalDateTimeCellValue();
         String partner = iterator.next().getStringCellValue();
-        int quantity = numericalElseZero(iterator.next());
+        Double quantity = numericalElseZero(iterator.next());
 
         Goods goods = GoodsMap.get(code);
         GoodsMonth goodsMonth = new GoodsMonth(goods, date);
