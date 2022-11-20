@@ -5,30 +5,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StockManage {
-    private int stockInMonth;
-    private int stockOutMonth;
+    private Double stockInMonth;
+    private Double stockOutMonth;
     private final List<SaleInfo> stockOut = new ArrayList<>();
 
-    private int stock;
+    private Double stock;
 
     public StockManage() {
-        this.stockInMonth = 0;
-        this.stockOutMonth = 0;
+        this.stockInMonth = 0.0;
+        this.stockOutMonth = 0.0;
     }
 
-    public int getStockOutMonth() {
+    public Double getStockOutMonth() {
         return stockOutMonth;
     }
 
-    public int getStockInMonth() {
+    public Double getStockInMonth() {
         return stockInMonth;
     }
 
-    public void setStockInMonth(int quantity) {
+    public void setStockInMonth(Double quantity) {
         this.stockInMonth = quantity;
     }
 
-    public void setStockOutMonth(int quantity) {
+    public void setStockOutMonth(Double quantity) {
         this.stockOutMonth = quantity;
     }
 
@@ -44,15 +44,15 @@ public class StockManage {
 //        return stockOut.stream().sorted().skip(num).collect(Collectors.toList());
 //    }
 
-    public int etcSum(int num) {
-        return stockOut.stream().sorted().skip(num).map(SaleInfo::getQuantity).reduce(Integer::sum).orElse(0);
+    public Double etcSum(int num) {
+        return stockOut.stream().sorted().skip(num).map(SaleInfo::getQuantity).reduce(Double::sum).orElse(0.0);
     }
 
-    public void setStock(int remain) {
+    public void setStock(Double remain) {
         this.stock = remain;
     }
 
-    public int getStock() {
+    public Double getStock() {
         return this.stock;
     }
 }
