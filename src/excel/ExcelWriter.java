@@ -14,23 +14,26 @@ public class ExcelWriter {
     private final String fileName;
     private final XSSFWorkbook workbook;
     private final XSSFSheet sheet;
-    private final ExcelWriteStrategy strategy;
+    private final ExceAllStrategy strategyAll;
     private final Iterator<?> iterator;
+    private int rowNum = 0;
 
-    public ExcelWriter(String filePath, String fileName, ExcelWriteStrategy strategy, Iterator<?> iterator) {
+    public ExcelWriter(String filePath, String fileName, ExceAllStrategy strategyAll, Iterator<?> iterator) {
         this.filePath = filePath;
         this.fileName = fileName;
         this.workbook = new XSSFWorkbook();
         this.sheet = workbook.createSheet();
-        this.strategy = strategy;
+        this.strategyAll = strategyAll;
         this.iterator = iterator;
+    }
+    public Row createRow() {
+        return sheet.createRow(rowNum++);
     }
 
     public void writeAll() {
-        int rowNum = 0;
         while (iterator.hasNext()) {
             Row row = sheet.createRow(rowNum++);
-            strategy.rowStrategy(row, iterator.next());
+            strategyAll.rowStrategy(row, iterator.next());
         }
     }
 
