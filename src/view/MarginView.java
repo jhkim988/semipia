@@ -66,7 +66,6 @@ public class MarginView {
     private static void writeRow(Row row, Object obj) {
         if (row.getRowNum() == 0) {
             IntStream.range(0, columnNames.size()).forEach(idx -> row.createCell(idx).setCellValue(columnNames.get(idx)));
-            return;
         }
         Data data = (Data) obj;
         Goods goods = data.getGoods();
@@ -92,6 +91,8 @@ public class MarginView {
                 , MarginView::writeRow
                 , rows.iterator()
         );
+        Row first = writer.createRow();
+        IntStream.range(0, columnNames.size()).forEach(idx -> first.createCell(idx).setCellValue(columnNames.get(idx)));
         writer.writeAll();
         writer.save();
     }

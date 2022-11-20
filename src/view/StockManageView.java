@@ -68,7 +68,6 @@ public class StockManageView {
     private static void writeRow(Row row, Object obj) {
         if (row.getRowNum() == 0) {
             IntStream.range(0, columnNames.size()).forEach(idx -> row.createCell(idx).setCellValue(columnNames.get(idx)));
-            return;
         }
         Map.Entry<GoodsMonth, StockManage> entry = (Map.Entry<GoodsMonth, StockManage>) obj;
         GoodsMonth key = entry.getKey();
@@ -83,13 +82,13 @@ public class StockManageView {
                 , key.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM"))
                 , ""
                 , ""
-                , value.getStockInMonth()
+                , value.getStockInMonth().doubleValue()
                 , partnerFormatting(primary)
         );
         stream = Stream.concat(stream, partnerSaleQuantityFormatting(3, primary).stream());
-        stream = Stream.concat(stream, Stream.of(value.etcSum(3)
-                , value.getStockOutMonth()
-                , value.getStock()));
+        stream = Stream.concat(stream, Stream.of(value.etcSum(3).doubleValue()
+                , value.getStockOutMonth().doubleValue()
+                , value.getStock().doubleValue()));
 
         List<Object> data = (List<Object>) stream.collect(Collectors.toList());
         IntStream.range(0, types.length).forEach(idx -> {
@@ -103,6 +102,8 @@ public class StockManageView {
     }
 
     public static void main(String[] args) {
+        Row first = StockManageView.writer.createRow();
+        IntStream.range(0, columnNames.size()).forEach(idx -> first.createCell(idx).setCellValue(columnNames.get(idx)));
         StockManageView.writer.writeAll();
         StockManageView.writer.save();
     }
