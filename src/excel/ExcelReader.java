@@ -33,8 +33,8 @@ public class ExcelReader {
         }
     }
 
-    public static int numericalElseZero(Cell cell) {
-        if (cell.getCellType().equals(CellType.NUMERIC)) return (int) cell.getNumericCellValue();
-        return 0;
+    public static Double numericalElseZero(Cell cell) {
+        if (cell.getCellType().equals(CellType.NUMERIC)) return cell.getNumericCellValue();
+        return 0.0;
     }
 }
