@@ -9,7 +9,7 @@ public class StockManage {
     private Double stockOutMonth;
     private final List<SaleInfo> stockOut = new ArrayList<>();
 
-    private Double stock;
+    private Double stock = 0.0;
 
     public StockManage() {
         this.stockInMonth = 0.0;
