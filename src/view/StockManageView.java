@@ -6,16 +6,16 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.lang.reflect.InvocationTargetException;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StockManageView {
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
     private static final ExcelWriter writer = new ExcelWriter(
             "../"
             , "재고관리_Sophie.xlsx"
@@ -60,8 +60,8 @@ public class StockManageView {
         return sb.toString();
     }
 
-    private static List<Integer> partnerSaleQuantityFormatting(int num, List<SaleInfo> list) {
-        return Stream.concat(list.stream().map(SaleInfo::getQuantity), IntStream.generate(() -> 0).boxed())
+    private static List<Double> partnerSaleQuantityFormatting(int num, List<SaleInfo> list) {
+        return Stream.concat(list.stream().map(SaleInfo::getQuantity), DoubleStream.generate(() -> 0).boxed())
                 .limit(num).collect(Collectors.toList());
     }
 
@@ -80,7 +80,7 @@ public class StockManageView {
                 goods.getCode()
                 , goods.getGroupName()
                 , goods.getGoodsName()
-                , dateFormat.format(key.getDate())
+                , key.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM"))
                 , ""
                 , ""
                 , value.getStockInMonth()
