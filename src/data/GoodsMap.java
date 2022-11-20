@@ -4,17 +4,16 @@ import excel.ExcelReader;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class GoodsMap {
     private static final Map<String, Goods> goodsMap = new HashMap<>();
-    private static final LocalDate START = LocalDate.of(2022, 1, 1);
-    private static final LocalDate END = LocalDate.of(2024, 12, 1);
+    private static final LocalDateTime START = LocalDateTime.of(2022, 1, 1, 0, 0);
+    private static final LocalDateTime END = LocalDateTime.of(2024, 12, 1, 0, 0);
     static {
         new ExcelReader(
                 "../2022-11-19"
@@ -22,9 +21,14 @@ public class GoodsMap {
                 , "품목등록"
                 , GoodsMap::readCell
         ).load();
+        new ExcelReader(
+                "../2022-11-19"
+                , "3.품목별이익현황.xlsx"
+                , "품목별이익현황"
+                , GoodsMap::readMargin
+        ).load();
         goodsMap.forEach((key, value) -> {
-            for (LocalDate localDate = START; !localDate.equals(END); localDate = localDate.plusMonths(1)) {
-                Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            for (LocalDateTime date = START; !date.equals(END); date = date.plusMonths(1)) {
                 GoodsMonth goodsMonth = new GoodsMonth(value, date);
                 StockManageMap.put(goodsMonth, new StockManage());
             }
@@ -42,6 +46,18 @@ public class GoodsMap {
         GoodsMap.put(code, goods);
     }
 
+    private static void readMargin(Row row) {
+        if (row.getRowNum() == 0) return;
+        Iterator<Cell> iterator = row.iterator();
+        String code = iterator.next().getStringCellValue();
+        Double salePrice = iterator.next().getNumericCellValue();
+        Double productPrice = iterator.next().getNumericCellValue();
+        Goods goods = GoodsMap.get(code);
+        goods.setSalePrice(salePrice);
+        goods.setProductionPrice(productPrice);
+        GoodsMap.put(code, goods);
+    }
+
     private GoodsMap() { }
 
     public static Goods put(String code, Goods goods) {
@@ -55,5 +71,9 @@ public class GoodsMap {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Set<Map.Entry<String, Goods>> getEntrySet() {
+        return goodsMap.entrySet();
     }
 }
