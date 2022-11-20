@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81ca743a-c8b0-48c0-bc60-52c04e6f8cdb" name="변경" comment="리팩토링">
-      <change beforePath="$PROJECT_DIR$/src/data/GoodsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/GoodsMap.java" afterDir="false" />
+    <list default="true" id="81ca743a-c8b0-48c0-bc60-52c04e6f8cdb" name="변경" comment="이익률 관련 추가">
+      <change afterPath="$PROJECT_DIR$/src/view/MarginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/GoodsMonth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/GoodsMonth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/SaleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/SaleInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/StockManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StockManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/StockManageMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StockManageMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/StockManageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/StockManageView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/Goods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Goods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/SaleInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/SaleInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelReader$Actor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/GoodsMonth.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/GoodsMonth.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/StockManage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/StockManage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/StockManageMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/StockManageMap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/StockManageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/StockManageView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,29 +52,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="excel" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.StockManageView">
+  <component name="RunManager" selected="애플리케이션.MarginView">
     <configuration name="ExcelReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="excel.ExcelReader" />
       <module name="semipia" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="excel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MarginView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.MarginView" />
+      <module name="semipia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,6 +123,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.MarginView" />
         <item itemvalue="애플리케이션.StockManageView" />
         <item itemvalue="애플리케이션.ExcelReader" />
       </list>
@@ -217,7 +236,42 @@
       <option name="project" value="LOCAL" />
       <updated>1668876316656</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="리팩토링">
+      <created>1668876800112</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1668876800112</updated>
+    </task>
+    <task id="LOCAL-00016" summary="불필요한 파일 삭제">
+      <created>1668876974858</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1668876974858</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Double 로 타입 변경">
+      <created>1668949981236</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1668949981236</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Double 로 타입 변경, 이익률 관련 추가">
+      <created>1668950004604</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668950004604</updated>
+    </task>
+    <task id="LOCAL-00019" summary="이익률 관련 추가">
+      <created>1668950034120</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1668950034120</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,6 +299,10 @@
     <MESSAGE value="gitignore" />
     <MESSAGE value="전략패턴 적용" />
     <MESSAGE value="리팩토링" />
-    <option name="LAST_COMMIT_MESSAGE" value="리팩토링" />
+    <MESSAGE value="불필요한 파일 삭제" />
+    <MESSAGE value="Double 로 타입 변경" />
+    <MESSAGE value="Double 로 타입 변경, 이익률 관련 추가" />
+    <MESSAGE value="이익률 관련 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="이익률 관련 추가" />
   </component>
 </project>
