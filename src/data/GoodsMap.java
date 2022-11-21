@@ -26,7 +26,7 @@ public class GoodsMap {
                 , GoodsMap::readMargin
         ).load();
         goodsMap.forEach((key, value) -> {
-            for (LocalDateTime date = START; !date.equals(END); date = date.plusMonths(1)) {
+            for (LocalDateTime date = START; !date.isAfter(END); date = date.plusMonths(1)) {
                 GoodsMonth goodsMonth = new GoodsMonth(value, date);
                 StockManageMap.put(goodsMonth, new StockManage());
             }

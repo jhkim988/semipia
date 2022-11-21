@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3789d810-3c05-42ab-8d9e-58739096995a" name="변경" comment="리팩토링">
+    <list default="true" id="3789d810-3c05-42ab-8d9e-58739096995a" name="변경" comment="기타 파일">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/GoodsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/GoodsMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Goods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Goods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/StockManage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/StockManage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -56,7 +62,7 @@
       <recent name="excel" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.StockManageOut">
+  <component name="RunManager" selected="애플리케이션.MarginOut">
     <configuration name="ExcelReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="excel.ExcelReader" />
       <module name="semipia" />
@@ -124,8 +130,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.StockManageOut" />
         <item itemvalue="애플리케이션.MarginOut" />
+        <item itemvalue="애플리케이션.StockManageOut" />
         <item itemvalue="애플리케이션.Main" />
         <item itemvalue="애플리케이션.ExcelReader" />
       </list>
