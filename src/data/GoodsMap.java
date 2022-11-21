@@ -16,14 +16,12 @@ public class GoodsMap {
     private static final LocalDateTime END = LocalDateTime.of(2024, 12, 1, 0, 0);
     static {
         new ExcelReader(
-                "../2022-11-19"
-                , "0.품목리스트.xlsx"
+                "../2022-11-19/0.품목리스트.xlsx"
                 , "품목등록"
                 , GoodsMap::readCell
         ).load();
         new ExcelReader(
-                "../2022-11-19"
-                , "3.품목별이익현황.xlsx"
+                "../2022-11-19/3.품목별이익현황.xlsx"
                 , "품목별이익현황"
                 , GoodsMap::readMargin
         ).load();
@@ -65,12 +63,7 @@ public class GoodsMap {
     }
     public static Goods get(String code) {
         if (goodsMap.containsKey(code)) return goodsMap.get(code);
-        try {
-            throw new Exception("goodsMap 에 " + code + " 가 존재하지 않음");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        throw new RuntimeException("goodsMap 에 " + code + " 가 존재하지 않음");
     }
 
     public static Set<Map.Entry<String, Goods>> getEntrySet() {

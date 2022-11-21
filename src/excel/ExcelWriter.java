@@ -1,44 +1,48 @@
 package excel;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
+import java.lang.invoke.MethodType;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class ExcelWriter {
     private final String filePath;
-    private final String fileName;
     private final XSSFWorkbook workbook;
     private final XSSFSheet sheet;
-    private final ExceAllStrategy strategyAll;
-    private final Iterator<?> iterator;
     private int rowNum = 0;
 
-    public ExcelWriter(String filePath, String fileName, ExceAllStrategy strategyAll, Iterator<?> iterator) {
+    public ExcelWriter(String filePath) {
         this.filePath = filePath;
-        this.fileName = fileName;
         this.workbook = new XSSFWorkbook();
         this.sheet = workbook.createSheet();
-        this.strategyAll = strategyAll;
-        this.iterator = iterator;
     }
-    public Row createRow() {
+    private Row createRow() {
         return sheet.createRow(rowNum++);
     }
 
-    public void writeAll() {
-        while (iterator.hasNext()) {
-            Row row = sheet.createRow(rowNum++);
-            strategyAll.rowStrategy(row, iterator.next());
-        }
+    public void write(List<?> list) {
+        Row row = createRow();
+        IntStream.range(0, list.size()).forEach(idx -> {
+                Object obj = list.get(idx);
+                Class<?> cls = MethodType.methodType(obj.getClass()).unwrap().returnType();
+                try {
+                    Cell.class.getMethod("setCellValue", cls).invoke(row.createCell(idx), obj);
+                } catch (IllegalAccessException | InvocationTargetException |NoSuchMethodException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        );
     }
 
     public void save() {
-        try (FileOutputStream out = new FileOutputStream(new File(filePath, fileName))) {
+        try (FileOutputStream out = new FileOutputStream(filePath)) {
             workbook.write(out);
         } catch (IOException e) {
             e.printStackTrace();

@@ -15,15 +15,13 @@ public class StockManageMap {
 
     static {
         new ExcelReader(
-                "../2022-11-19"
-                , "2.재고변동표.xlsx"
+                "../2022-11-19/2.재고변동표.xlsx"
                 , "재고변동표"
                 , StockManageMap::readCell_재고변동표
         ).load();
         System.out.println("재고변동표 로딩 완료");
         new ExcelReader(
-                "../2022-11-19"
-                , "1.판매현황.xlsx"
+                "../2022-11-19/1.판매현황.xlsx"
                 , "판매현황"
                 , StockManageMap::readCell_판매현황
         ).load();
