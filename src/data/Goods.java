@@ -19,9 +19,9 @@ public class Goods {
         return salePrice - productionPrice;
     }
     public Double calculateMarginRate() {
-        return (salePrice - productionPrice)/productionPrice;
+        return (salePrice - productionPrice)/salePrice;
     }
-public Double calculateCurrentTotalStockProductionPrice() {
+    public Double calculateCurrentTotalStockProductionPrice() {
         return currentQuantity * productionPrice;
 }
 

@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3789d810-3c05-42ab-8d9e-58739096995a" name="변경" comment="리팩토링">
-      <change afterPath="$PROJECT_DIR$/src/out/StockManageOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/GoodsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/GoodsMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/StockManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StockManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/StockManageMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StockManageMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excel/ExceAllStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excel/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excel/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excel/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excel/ExcelWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MarginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/MarginOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/StockManageView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/StockManageMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/StockManageMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/StockManageView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Goods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,18 +39,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="excel" />
@@ -147,7 +134,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="81ca743a-c8b0-48c0-bc60-52c04e6f8cdb" name="변경" comment="" />
+      <changelist id="3789d810-3c05-42ab-8d9e-58739096995a" name="변경" comment="리팩토링" />
       <created>1668834964384</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -342,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668950245260</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="리팩토링">
+      <created>1668994819909</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1668994819909</updated>
+    </task>
+    <task id="LOCAL-00029" summary="리팩토링">
+      <created>1668994831158</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1668994831158</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
