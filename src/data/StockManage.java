@@ -40,10 +40,6 @@ public class StockManage {
         return stockOut.stream().sorted().limit(num).collect(Collectors.toList());
     }
 
-//    public List<SaleInfo> etcSaleInfo(int num) {
-//        return stockOut.stream().sorted().skip(num).collect(Collectors.toList());
-//    }
-
     public Double etcSum(int num) {
         return stockOut.stream().sorted().skip(num).map(SaleInfo::getQuantity).reduce(Double::sum).orElse(0.0);
     }
