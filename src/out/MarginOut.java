@@ -47,7 +47,7 @@ public class MarginOut {
     public static void print() {
         ExcelWriter writer = new ExcelWriter("../이익현황_Sophie.xlsx");
         writer.write(columnNames);
-        GoodsMap.getEntrySet().forEach((entry -> {
+        GoodsMap.MAP.getEntrySet().forEach((entry -> {
             Goods goods = entry.getValue();
             IntStream.range(0, 6).forEach(idx -> {
                 List<Object> row = new ArrayList<>();

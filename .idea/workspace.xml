@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3789d810-3c05-42ab-8d9e-58739096995a" name="변경" comment="기타 파일">
+    <list default="true" id="3789d810-3c05-42ab-8d9e-58739096995a" name="변경" comment="24년 12월 없는 버그 해결">
+      <change afterPath="$PROJECT_DIR$/src/out/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/GoodsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/GoodsMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Goods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Goods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/StockManageMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StockManageMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/MarginOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/MarginOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/StockManageOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/StockManageOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/GoodsMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/StockManage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/StockManage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/excel/ExcelWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/StockManageMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/StockManageMap.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +63,7 @@
       <recent name="excel" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.MarginOut">
+  <component name="RunManager" selected="애플리케이션.Main">
     <configuration name="ExcelReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="excel.ExcelReader" />
       <module name="semipia" />
@@ -130,9 +131,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.Main" />
         <item itemvalue="애플리케이션.MarginOut" />
         <item itemvalue="애플리케이션.StockManageOut" />
-        <item itemvalue="애플리케이션.Main" />
         <item itemvalue="애플리케이션.ExcelReader" />
       </list>
     </recent_temporary>
@@ -349,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668994831158</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="24년 12월 없는 버그 해결">
+      <created>1669039268573</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1669039268573</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -386,6 +394,7 @@
     <MESSAGE value="설정파일" />
     <MESSAGE value="class 파일" />
     <MESSAGE value="리팩토링" />
-    <option name="LAST_COMMIT_MESSAGE" value="리팩토링" />
+    <MESSAGE value="24년 12월 없는 버그 해결" />
+    <option name="LAST_COMMIT_MESSAGE" value="24년 12월 없는 버그 해결" />
   </component>
 </project>
