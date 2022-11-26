@@ -1,5 +1,7 @@
 package data;
 
+import java.time.LocalDateTime;
+
 public class Goods {
     private final String code;
     private final String groupName;
@@ -7,7 +9,10 @@ public class Goods {
 
     private Double salePrice = 0.0;
     private Double productionPrice = 0.0;
-    private Double currentQuantity = 0.0;
+    private Double currentStock = 0.0;
+    private LocalDateTime stockUpdateDate = LocalDateTime.of(1990, 1, 1, 0, 0);
+
+
 
     public Goods(String code, String groupName, String goodsName) {
         this.code = code;
@@ -22,7 +27,7 @@ public class Goods {
         return (salePrice - productionPrice)/salePrice;
     }
     public Double calculateCurrentTotalStockProductionPrice() {
-        return currentQuantity * productionPrice;
+        return currentStock * productionPrice;
 }
 
     public String getCode() {
@@ -51,11 +56,18 @@ public class Goods {
     public void setProductionPrice(Double productionPrice) {
         this.productionPrice = productionPrice;
     }
-    public Double getCurrentQuantity() {
-        return currentQuantity;
+    public Double getCurrentStock() {
+        return currentStock;
     }
 
-    public void setCurrentQuantity(Double currentQuantity) {
-        this.currentQuantity = currentQuantity;
+    public void setCurrentStock(Double currentStock) {
+        this.currentStock = currentStock;
+    }
+    public LocalDateTime getStockUpdateDate() {
+        return stockUpdateDate;
+    }
+
+    public void setStockUpdateDate(LocalDateTime stockUpdateDate) {
+        this.stockUpdateDate = stockUpdateDate;
     }
 }

@@ -40,7 +40,7 @@ public class StockManageOut {
     }
 
     public static void print() {
-        ExcelWriter writer = new ExcelWriter("../재고관리_Sophie.xlsx");
+        ExcelWriter writer = new ExcelWriter(Env.재고관리_OutFileName.getValue());
         writer.write(columnNames);
         StockManageMap.MAP.getEntrySet().forEach(entry -> {
             GoodsMonth key = entry.getKey();

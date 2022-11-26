@@ -3,8 +3,8 @@ package data;
 import excel.ExcelReader;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import out.Env;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,15 +15,15 @@ public enum GoodsMap {
     private final Map<String, Goods> goodsMap = new HashMap<>();
 
 
-    private GoodsMap() {
+    GoodsMap() {
         new ExcelReader(
-                "../2022-11-19/0.품목리스트.xlsx"
-                , "품목등록"
+                Env.품목리스트_InFileName.getValue()
+                , Env.품목리스트_InFileSheetName.getValue()
                 , this::readCell
         ).load();
         new ExcelReader(
-                "../2022-11-19/3.품목별이익현황.xlsx"
-                , "품목별이익현황"
+                Env.품목별이익현황_InFileName.getValue()
+                , Env.품목별이익현황_InFileSheetName.getValue()
                 , this::readMargin
         ).load();
         System.out.println("품목리스트 로딩 완료");

@@ -27,25 +27,26 @@ public class MarginOut {
             , "마진"
             , "마진율"
     );
-    private static final List<Method> getDataMethods;
 
-    static {
+    private static List<Method> getDataMethods() {
         try {
-            getDataMethods = Arrays.asList(
-                    Goods.class.getMethod("getCurrentQuantity")
+            final List<Method> getDataMethods = Arrays.asList(
+                    Goods.class.getMethod("getCurrentStock")
                     , Goods.class.getMethod("calculateCurrentTotalStockProductionPrice")
                     , Goods.class.getMethod("getProductionPrice")
                     , Goods.class.getMethod("getSalePrice")
                     , Goods.class.getMethod("calculateMargin")
                     , Goods.class.getMethod("calculateMarginRate")
             );
+            return getDataMethods;
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void print() {
-        ExcelWriter writer = new ExcelWriter("../이익현황_Sophie.xlsx");
+        List<Method> dataMethods = getDataMethods();
+        ExcelWriter writer = new ExcelWriter(Env.이익현황_OutFileName.getValue());
         writer.write(columnNames);
         GoodsMap.MAP.getEntrySet().forEach((entry -> {
             Goods goods = entry.getValue();
@@ -56,7 +57,7 @@ public class MarginOut {
                 row.add(goods.getGoodsName());
                 row.add(dataNames.get(idx));
                 try {
-                    row.add(getDataMethods.get(idx).invoke(goods));
+                    row.add(dataMethods.get(idx).invoke(goods));
                 } catch (IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }

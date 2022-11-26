@@ -12,10 +12,9 @@ import static excel.ExcelReader.numericalElseZero;
 public enum StockManageMap {
     MAP;
     private final Map<GoodsMonth, StockManage> rows = new TreeMap<>();
-    private final LocalDateTime now = LocalDateTime.now();
     private final LocalDateTime START = LocalDateTime.of(2022, 1, 1, 0, 0);
     private final LocalDateTime END = LocalDateTime.of(2024, 12, 1, 0, 0);
-    private StockManageMap() {
+    StockManageMap() {
         GoodsMap.MAP.getEntrySet().forEach(entry -> {
             Goods value = entry.getValue();
             for (LocalDateTime date = START; !date.isAfter(END); date = date.plusMonths(1)) {
@@ -54,8 +53,9 @@ public enum StockManageMap {
         stockManage.setStockInMonth(stockIn);
         stockManage.setStockOutMonth(stockOut);
         stockManage.setStock(remain);
-        if (date.getYear() == now.getYear() && date.getMonth() == now.getMonth()) {
-            goods.setCurrentQuantity(remain);
+        if (goods.getStockUpdateDate().isBefore(date)) {
+            goods.setCurrentStock(remain);
+            goods.setStockUpdateDate(date);
         }
         rows.put(goodsMonth, stockManage);
     }
