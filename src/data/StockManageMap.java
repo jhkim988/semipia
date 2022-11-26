@@ -3,6 +3,7 @@ package data;
 import excel.ExcelReader;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import out.Env;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -23,14 +24,14 @@ public enum StockManageMap {
             }
         });
         new ExcelReader(
-                "../2022-11-19/2.재고변동표.xlsx"
-                , "재고변동표"
+                Env.재고변동표_InFileName.getValue()
+                , Env.재고변동표_InFileNameSheetName.getValue()
                 , this::readCell_재고변동표
         ).load();
         System.out.println("재고변동표 로딩 완료");
         new ExcelReader(
-                "../2022-11-19/1.판매현황.xlsx"
-                , "판매현황"
+                Env.판매현황_InFileName.getValue()
+                , Env.판매현황_InFileNameSheetName.getValue()
                 , this::readCell_판매현황
         ).load();
         System.out.println("판매현황 로딩 완료");
